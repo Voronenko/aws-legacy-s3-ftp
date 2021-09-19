@@ -1,0 +1,7 @@
+.idea
+.vscode
+.terraform
+data
+!.gitignore
+terraform.tfstate*
+init/*prod*.json

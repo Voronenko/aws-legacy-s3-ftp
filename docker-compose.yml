@@ -1,0 +1,71 @@
+---
+version: "3.7"
+services:
+  ftp:
+    image: drakkan/sftpgo:v2.1.2-slim
+    container_name: ftp
+    environment:
+      - SFTPGO_FTPD__BINDINGS__0__PORT=2121
+      # HTTP API PORT
+      - SFTPGO_HTTPD__BINDINGS__0__PORT=8090
+#      - SFTPGO_FTPD__BINDINGS__0__FORCE_PASSIVE_IP=<your external ip here>
+      - SFTPGO_LOADDATA_FROM=/etc/sftpgo/init/sftpgo-example.json
+    volumes:
+      - srv-sftpgo:/srv/sftpgo
+      - var-lib-sftpgo:/var/lib/sftpgo
+      - etc-sftpgo-init:/etc/sftpgo/init
+    ports:
+       - "8090:8090"
+       - "2022:2020"
+       - "2121:2121"
+       - "50000-50100:50000-50100"
+    networks:
+        traefik-public:
+    extra_hosts:
+        docker.lvh.voronenko.net: 172.19.0.1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ftp.rule=Host(`ftp.lvh.voronenko.net`)"
+      - "traefik.http.routers.ftp.entrypoints=web"
+      - "traefik.http.services.ftp.loadbalancer.server.port=8090"
+
+#      - "traefik.http.middlewares.traefik-auth.basicauth.users=USER:PASSWORD"
+#      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+#      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
+
+      - "traefik.http.routers.ftp-secure.entrypoints=websecure"
+      - "traefik.http.routers.ftp-secure.rule=Host(`ftp.lvh.voronenko.net`)"
+#      - "traefik.http.routers.ftp-secure.middlewares=traefik-auth"
+      - "traefik.http.routers.ftp-secure.tls=true"
+    restart: unless-stopped
+networks:
+  traefik-public:
+    external: true
+
+
+#    --mount type=bind,source=/my/own/sftpgodata,target=/srv/sftpgo
+#    --mount type=bind,source=/my/own/sftpgohome,target=/var/lib/sftpgo
+volumes:
+  srv-sftpgo:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD/data/srv-sfpgo
+  var-lib-sftpgo:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD/data/var-lib-sftpgo
+  etc-sftpgo-init:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD/init
+
+# /srv/sftpgo to handle persistent data. The default home directory for SFTP/FTP/WebDAV users is /srv/sftpgo/data/<username>.
+# Backups are stored in /srv/sftpgo/backups
+# /var/lib/sftpgo is the home directory for the sftpgo system user defined inside the container.
+# This is the container working directory too, host keys will be created here when using the default configuration.
