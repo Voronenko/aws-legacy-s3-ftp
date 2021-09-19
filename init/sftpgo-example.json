@@ -1,1 +1,71 @@
-{"users":[{"id":1,"status":1,"username":"ftpuploader","expiration_date":0,"password":"$2a$10$Oy1uPqSW46OAhAVQQUoliOaPgeZXQ3wtgAJC.552nkO3A/RMoDkdC","home_dir":"/srv/sftpgo/data/ftpuploader","uid":0,"gid":0,"max_sessions":0,"quota_size":0,"quota_files":0,"permissions":{"/":["*"]},"used_quota_size":0,"used_quota_files":0,"last_quota_update":0,"upload_bandwidth":0,"download_bandwidth":0,"last_login":1632044705014,"filters":{"tls_username":"None","hooks":{"external_auth_disabled":false,"pre_login_disabled":false,"check_password_disabled":false}},"filesystem":{"provider":0,"s3config":{"access_secret":{}},"gcsconfig":{"credentials":{}},"azblobconfig":{"account_key":{},"sas_url":{}},"cryptconfig":{"passphrase":{}},"sftpconfig":{"password":{},"private_key":{}}}}],"folders":[],"admins":[{"id":1,"status":1,"username":"admin","password":"$2a$10$tPU0LmgTspdwmRKy/Pdx7uJyIL75QGDauI96/1OYn4OzPM/bknstu","email":"","permissions":["*"],"filters":{}}],"version":8}
+{
+  "users": [
+    {
+      "id": 1,
+      "status": 1,
+      "username": "ftpuploader",
+      "expiration_date": 0,
+      "password": "$2a$10$Oy1uPqSW46OAhAVQQUoliOaPgeZXQ3wtgAJC.552nkO3A/RMoDkdC",
+      "home_dir": "/srv/sftpgo/data/ftpuploader",
+      "uid": 0,
+      "gid": 0,
+      "max_sessions": 0,
+      "quota_size": 0,
+      "quota_files": 0,
+      "permissions": {
+        "/": [
+          "*"
+        ]
+      },
+      "used_quota_size": 0,
+      "used_quota_files": 0,
+      "last_quota_update": 0,
+      "upload_bandwidth": 0,
+      "download_bandwidth": 0,
+      "last_login": 1632044705014,
+      "filters": {
+        "tls_username": "None",
+        "hooks": {
+          "external_auth_disabled": false,
+          "pre_login_disabled": false,
+          "check_password_disabled": false
+        }
+      },
+      "filesystem": {
+        "provider": 0,
+        "s3config": {
+          "access_secret": {}
+        },
+        "gcsconfig": {
+          "credentials": {}
+        },
+        "azblobconfig": {
+          "account_key": {},
+          "sas_url": {}
+        },
+        "cryptconfig": {
+          "passphrase": {}
+        },
+        "sftpconfig": {
+          "password": {},
+          "private_key": {}
+        }
+      }
+    }
+  ],
+  "folders": [],
+  "admins": [
+    {
+      "id": 1,
+      "status": 1,
+      "username": "admin",
+      "password": "$2a$10$tPU0LmgTspdwmRKy/Pdx7uJyIL75QGDauI96/1OYn4OzPM/bknstu",
+      "email": "",
+      "permissions": [
+        "*"
+      ],
+      "filters": {}
+    }
+  ],
+  "version": 8
+}
