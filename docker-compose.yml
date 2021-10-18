@@ -2,7 +2,7 @@
 version: "3.7"
 services:
   ftp:
-    image: drakkan/sftpgo:v2.1.2-slim
+    image: drakkan/sftpgo:v2.1.2
     container_name: ftp
     environment:
      #COMMON SETTINGS
@@ -23,16 +23,16 @@ services:
     #  - SFTPGO_DATA_PROVIDER__NAME=appdb
     #WEB UI
       - SFTPGO_HTTPD__BINDINGS__ENABLE_WEB_ADMIN=true
-      - SFTPGO_HTTPD__BINDINGS__PORT=8090
+#      - SFTPGO_HTTPD__BINDINGS__PORT=8080
       - SFTPGO_FTPD__BINDINGS__0__PORT=2121
 #      - SFTPGO_FTPD__BINDINGS__0__FORCE_PASSIVE_IP=<your external ip here>
-      - SFTPGO_LOADDATA_FROM=/etc/sftpgo/init/sftpgo-prod.json
+      - SFTPGO_LOADDATA_FROM=/etc/sftpgo/init/sftpgo-example.json
     volumes:
       - srv-sftpgo:/srv/sftpgo
       - var-lib-sftpgo:/var/lib/sftpgo
       - etc-sftpgo-init:/etc/sftpgo/init
     ports:
-       - "8090:8090"
+       - "8090:8080"
        - "2022:2020"
        - "2121:2121"
        - "50000-50050:50000-50050"
@@ -44,7 +44,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.ftp.rule=Host(`ftp.lvh.voronenko.net`)"
       - "traefik.http.routers.ftp.entrypoints=web"
-      - "traefik.http.services.ftp.loadbalancer.server.port=8090"
+      - "traefik.http.services.ftp.loadbalancer.server.port=8080"
 
 #      - "traefik.http.middlewares.traefik-auth.basicauth.users=USER:PASSWORD"
 #      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"

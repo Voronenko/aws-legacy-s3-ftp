@@ -51,7 +51,15 @@ aws s3 ls s3://aws-legacy-s3-ftp
 
 http://localhost:8090/web/admin/login/
 
+demo user provisioned:
+
+admin/admin
+
 ### Client web panel
 
 http://localhost:8090/web/client/login/
+
+demo user provisioned:
+
+ftpuploader/ftpuploader
 
