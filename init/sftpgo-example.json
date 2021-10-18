@@ -5,7 +5,7 @@
       "status": 1,
       "username": "ftpuploader",
       "expiration_date": 0,
-      "password": "$2a$10$Oy1uPqSW46OAhAVQQUoliOaPgeZXQ3wtgAJC.552nkO3A/RMoDkdC",
+      "password": "$2a$10$e1O9Ge0Wt6V6u..2vi1b5eILs1jKNH4ht4XroZXwBV3eprPdjCdUq",
       "home_dir": "/srv/sftpgo/data/ftpuploader",
       "uid": 0,
       "gid": 0,
@@ -22,7 +22,7 @@
       "last_quota_update": 0,
       "upload_bandwidth": 0,
       "download_bandwidth": 0,
-      "last_login": 1632044705014,
+      "last_login": 0,
       "filters": {
         "tls_username": "None",
         "hooks": {
@@ -59,7 +59,7 @@
       "id": 1,
       "status": 1,
       "username": "admin",
-      "password": "$2a$10$tPU0LmgTspdwmRKy/Pdx7uJyIL75QGDauI96/1OYn4OzPM/bknstu",
+      "password": "$2a$10$iFABaq/j7jZirCBEjw.RQOYqFafEJMlN3kPRyjkU9OxQz1DGv0gqO",
       "email": "",
       "permissions": [
         "*"

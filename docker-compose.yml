@@ -5,11 +5,28 @@ services:
     image: drakkan/sftpgo:v2.1.2-slim
     container_name: ftp
     environment:
+     #COMMON SETTINGS
+#     - SFTPGO_COMMON__UPLOAD_MODE=1
+    #  #FIREWALL
+    #  - SFTPGO_DEFENDER__ENABLED=true
+    #  - SFTPGO_DEFENDER__BAN_TIME=15
+    #  - SFTPGO_DEFENDER__BAN_TIME_INCREMENT=5
+    #  - SFTPGO_DEFENDER__THRESHOLD=3
+    #  - SFTPGO_DEFENDER__SCORE_INVALID=3
+    #  - SFTPGO_DEFENDER__SCORE_VALID=3
+    #  #DB SETTINGS
+    #  - SFTPGO_DATA_PROVIDER__DRIVER=mysql
+    #  - SFTPGO_DATA_PROVIDER__HOST=db
+    #  - SFTPGO_DATA_PROVIDER__PORT=3306
+    #  - SFTPGO_DATA_PROVIDER__USERNAME=user
+    #  - SFTPGO_DATA_PROVIDER__PASSWORD=pass
+    #  - SFTPGO_DATA_PROVIDER__NAME=appdb
+    #WEB UI
+      - SFTPGO_HTTPD__BINDINGS__ENABLE_WEB_ADMIN=true
+      - SFTPGO_HTTPD__BINDINGS__PORT=8090
       - SFTPGO_FTPD__BINDINGS__0__PORT=2121
-      # HTTP API PORT
-      - SFTPGO_HTTPD__BINDINGS__0__PORT=8090
 #      - SFTPGO_FTPD__BINDINGS__0__FORCE_PASSIVE_IP=<your external ip here>
-      - SFTPGO_LOADDATA_FROM=/etc/sftpgo/init/sftpgo-example.json
+      - SFTPGO_LOADDATA_FROM=/etc/sftpgo/init/sftpgo-prod.json
     volumes:
       - srv-sftpgo:/srv/sftpgo
       - var-lib-sftpgo:/var/lib/sftpgo
@@ -18,7 +35,7 @@ services:
        - "8090:8090"
        - "2022:2020"
        - "2121:2121"
-       - "50000-50100:50000-50100"
+       - "50000-50050:50000-50050"
     networks:
         traefik-public:
     extra_hosts:

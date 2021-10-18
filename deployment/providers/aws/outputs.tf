@@ -6,7 +6,8 @@ output "s3_ftp_user_id" {
   value = aws_iam_access_key.s3bucketwriter.id
 }
 output "s3_ftp_user_secret" {
-  value = aws_iam_access_key.s3bucketwriter.secret
+  value     = aws_iam_access_key.s3bucketwriter.secret
+  sensitive = true
 }
 
 output "s3_ftp_user_bucket_name" {
