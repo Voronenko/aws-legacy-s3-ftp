@@ -11,3 +11,6 @@ up: init
 reset:
 	rm -rf data/var-lib-sftpgo/*
 	docker-compose down -v
+	docker volume rm aws-legacy-s3-ftp_srv-sftpgo || true
+	docker volume rm aws-legacy-s3-ftp_var-lib-sftpgo || true
+	docker volume rm aws-legacy-s3-ftp_etc-sftpgo-init || true

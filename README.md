@@ -44,3 +44,14 @@ aws s3 ls s3://aws-legacy-s3-ftp
 2021-09-18 22:48:26     186902 userguide.pdf
 
 ```
+
+## Demo credentials
+
+### Admin web panel
+
+http://localhost:8090/web/admin/login/
+
+### Client web panel
+
+http://localhost:8090/web/client/login/
+
